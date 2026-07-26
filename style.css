@@ -50,7 +50,7 @@ body {
 .top-buttons {
     display: flex;
     justify-content: center;
-    gap: 15px;
+    gap: 30px;
     margin-bottom: 18px;
 }
 

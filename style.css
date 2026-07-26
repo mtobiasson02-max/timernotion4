@@ -5,110 +5,214 @@
 }
 
 body {
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: Inter, Arial, Helvetica, sans-serif;
     background: transparent;
+
     display: flex;
     justify-content: center;
     align-items: center;
+
     min-height: 100vh;
 }
 
 .timer-card {
-    width: 320px;
-    background: white;
-    border-radius: 18px;
-    box-shadow: 0 6px 20px rgba(0,0,0,0.12);
-    padding: 24px;
+
+    width: 420px;
+
+    background: #ffffff;
+
+    border-radius: 30px;
+
+    padding: 36px;
+
     text-align: center;
-    overflow: hidden;
-    transition: 0.3s;
+
+    box-shadow:
+        0 20px 50px rgba(0,0,0,.08),
+        0 6px 18px rgba(0,0,0,.04);
+
+    transition: .25s ease;
+
 }
 
-.progress-container {
-    width: 100%;
-    height: 8px;
-    background: #ececec;
-    border-radius: 999px;
-    overflow: hidden;
-    margin-bottom: 25px;
+.time{
+
+    font-size:82px;
+
+    font-weight:700;
+
+    letter-spacing:-3px;
+
+    color:#202124;
+
+    margin-bottom:28px;
+
 }
 
-.progress {
-    width: 0%;
-    height: 100%;
-    background: #47c46a;
-    transition: width 1s linear;
+.progress-container{
+
+    width:100%;
+
+    height:12px;
+
+    background:#ececec;
+
+    border-radius:999px;
+
+    overflow:hidden;
+
+    margin-bottom:42px;
+
 }
 
-.time {
-    font-size: 52px;
-    font-weight: bold;
-    margin-bottom: 30px;
-    color: #222;
+.progress{
+
+    width:0%;
+
+    height:100%;
+
+    background:#67c36a;
+
+    border-radius:999px;
+
+    transition:width .4s linear;
+
 }
 
-.top-buttons {
-    display: flex;
-    justify-content: center;
-    gap: 70px;
-    margin-bottom: 18px;
+.top-buttons{
+
+    display:flex;
+
+    justify-content:center;
+
+    gap:55px;
+
+    margin-bottom:34px;
+
 }
 
-.bottom-buttons {
-    display: flex;
-    justify-content: center;
-    gap: 10px;
+.top-buttons button{
+
+    width:74px;
+
+    height:74px;
+
+    border:none;
+
+    border-radius:22px;
+
+    background:#f7f7f7;
+
+    font-size:38px;
+
+    font-weight:700;
+
+    color:#222;
+
+    cursor:pointer;
+
+    transition:.2s;
+
 }
 
-button {
-    border: none;
-    border-radius: 10px;
-    cursor: pointer;
-    transition: 0.2s;
-    font-size: 16px;
+.top-buttons button:hover{
+
+    background:#ededed;
+
+    transform:translateY(-2px);
+
 }
 
-.top-buttons button {
-    width: 55px;
-    height: 55px;
-    font-size: 28px;
-    background: #f2f2f2;
+.bottom-buttons{
+
+    display:flex;
+
+    gap:16px;
+
 }
 
-.bottom-buttons button {
-    flex: 1;
-    padding: 12px;
-    background: #f2f2f2;
+.bottom-buttons button{
+
+    flex:1;
+
+    border:none;
+
+    border-radius:18px;
+
+    padding:16px 0;
+
+    font-size:24px;
+
+    font-weight:600;
+
+    cursor:pointer;
+
+    transition:.2s;
+
 }
 
-button:hover {
-    transform: scale(1.05);
+#start{
+
+    background:#66c466;
+
+    color:white;
+
 }
 
-button:active {
-    transform: scale(0.96);
+#pause{
+
+    background:#ffe7d0;
+
+    color:#a35300;
+
 }
 
-.completed {
-    background: #dff8df;
+#reset{
+
+    background:#f3f3f3;
+
+    color:#222;
+
 }
 
-.pop {
-    animation: pop 0.35s ease;
+.bottom-buttons button:hover{
+
+    transform:translateY(-2px);
+
+    filter:brightness(.98);
+
 }
 
-@keyframes pop {
+.completed{
 
-    0% {
-        transform: scale(0.95);
+    background:#eef9ef;
+
+}
+
+.pop{
+
+    animation:pop .35s ease;
+
+}
+
+@keyframes pop{
+
+    0%{
+
+        transform:scale(.96);
+
     }
 
-    60% {
-        transform: scale(1.03);
+    60%{
+
+        transform:scale(1.03);
+
     }
 
-    100% {
-        transform: scale(1);
+    100%{
+
+        transform:scale(1);
+
     }
 
 }

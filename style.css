@@ -59,11 +59,8 @@ body{
 .time{
 
     font-size:58px;
-
     font-weight:700;
-
     letter-spacing:-2px;
-
     color:#202124;
 
     margin-bottom:18px;
@@ -75,6 +72,9 @@ body{
     justify-content:center;
 
     align-items:center;
+
+    text-align:center;
+
 
 }
 

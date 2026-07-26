@@ -12,12 +12,13 @@ const timerCard = document.querySelector(".timer-card");
 const messages = [
     "🌱 Ett pass närmare målet.",
     "🚀 Snyggt jobbat!",
-    "☕ Dags för en paus!",
+    "🤩 Lets gooo!!",
     "⭐ Fokuspass klart!",
     "📚 Du gjorde det!",
     "💪 Fortsätt så!",
     "🎉 Ett steg närmare ditt mål!",
-    "🔥 Grymt fokus!"
+    "🔥 Grymt fokus!",
+    "😱 Snacka om lock in"
 ];
 
 let totalSeconds = 0;
@@ -58,116 +59,135 @@ function updateDisplay() {
     const seconds = totalSeconds % 60;
 
     timeDisplay.textContent =
-        `${String(minutes).padStart(2,"0")}:${String(seconds).padStart(2,"0")}`;
+        `${String(minutes).padStart(2, "0")}:${String(seconds).padStart(2, "0")}`;
 
-    if(initialSeconds>0){
-        const percent=((initialSeconds-totalSeconds)/initialSeconds)*100;
-        progress.style.width=Math.max(0,Math.min(100,percent))+"%";
-    }else{
-        progress.style.width="0%";
+    if (initialSeconds > 0) {
+        const percent = ((initialSeconds - totalSeconds) / initialSeconds) * 100;
+        progress.style.width = Math.max(0, Math.min(100, percent)) + "%";
+    } else {
+        progress.style.width = "0%";
     }
 }
 
-function finishTimer(){
+function finishTimer() {
 
     clearInterval(timer);
-    timer=null;
+    timer = null;
 
-    totalSeconds=0;
-    endTime=null;
+    totalSeconds = 0;
+    endTime = null;
 
-    progress.style.width="100%";
+    progress.style.width = "100%";
 
     timerCard.classList.add("completed");
     timerCard.classList.add("pop");
 
-    const randomMessage=messages[Math.floor(Math.random()*messages.length)];
+    const randomMessage =
+        messages[Math.floor(Math.random() * messages.length)];
 
-    timeDisplay.innerHTML=`
-        <div style="font-size:38px;font-weight:bold;">
-            ✓ KLAR
-        </div>
-        <div style="font-size:16px;font-weight:500;margin-top:10px;line-height:1.4;">
-            ${randomMessage}
+    timeDisplay.innerHTML = `
+        <div class="finished">
+            <div class="finished-title">
+                ✓ KLAR
+            </div>
+
+            <div class="finished-message">
+                ${randomMessage}
+            </div>
         </div>
     `;
 
     localStorage.removeItem("focusTimer");
 }
 
-function tick(){
+function tick() {
 
-    totalSeconds=Math.max(
+    totalSeconds = Math.max(
         0,
-        Math.ceil((endTime-Date.now())/1000)
+        Math.ceil((endTime - Date.now()) / 1000)
     );
 
     updateDisplay();
 
-    if(totalSeconds<=0){
+    if (totalSeconds <= 0) {
         finishTimer();
-    }else{
+    } else {
         saveState();
     }
 }
 
-plusBtn.onclick=()=>{
-    if(timer) return;
-    totalSeconds+=60;
-    initialSeconds=totalSeconds;
-    timerCard.classList.remove("completed","pop");
+plusBtn.onclick = () => {
+
+    if (timer) return;
+
+    totalSeconds += 60;
+    initialSeconds = totalSeconds;
+
+    timerCard.classList.remove("completed", "pop");
+
     updateDisplay();
+
     saveState();
 };
 
-minusBtn.onclick=()=>{
-    if(timer) return;
-    totalSeconds=Math.max(0,totalSeconds-60);
-    initialSeconds=totalSeconds;
-    timerCard.classList.remove("completed","pop");
+minusBtn.onclick = () => {
+
+    if (timer) return;
+
+    totalSeconds = Math.max(0, totalSeconds - 60);
+    initialSeconds = totalSeconds;
+
+    timerCard.classList.remove("completed", "pop");
+
     updateDisplay();
+
     saveState();
 };
 
-startBtn.onclick=()=>{
-    if(timer||totalSeconds<=0) return;
+startBtn.onclick = () => {
 
-    timerCard.classList.remove("completed","pop");
+    if (timer || totalSeconds <= 0) return;
 
-    endTime=Date.now()+totalSeconds*1000;
+    timerCard.classList.remove("completed", "pop");
+
+    endTime = Date.now() + totalSeconds * 1000;
 
     saveState();
+
     tick();
-    timer=setInterval(tick,1000);
+
+    timer = setInterval(tick, 1000);
 };
 
-pauseBtn.onclick=()=>{
-    if(!timer) return;
+pauseBtn.onclick = () => {
+
+    if (!timer) return;
 
     clearInterval(timer);
-    timer=null;
+    timer = null;
 
-    totalSeconds=Math.max(
+    totalSeconds = Math.max(
         0,
-        Math.ceil((endTime-Date.now())/1000)
+        Math.ceil((endTime - Date.now()) / 1000)
     );
 
-    endTime=null;
+    endTime = null;
 
     saveState();
+
     updateDisplay();
 };
 
-resetBtn.onclick=()=>{
+resetBtn.onclick = () => {
 
     clearInterval(timer);
-    timer=null;
+    timer = null;
 
-    totalSeconds=0;
-    initialSeconds=0;
-    endTime=null;
+    totalSeconds = 0;
+    initialSeconds = 0;
+    endTime = null;
 
-    timerCard.classList.remove("completed","pop");
+    timerCard.classList.remove("completed", "pop");
 
     localStorage.removeItem("focusTimer");
 
@@ -176,13 +196,17 @@ resetBtn.onclick=()=>{
 
 loadState();
 
-if(endTime){
-    if(totalSeconds<=0){
+if (endTime) {
+
+    if (totalSeconds <= 0) {
         finishTimer();
-    }else{
+    } else {
         updateDisplay();
-        timer=setInterval(tick,1000);
+        timer = setInterval(tick, 1000);
     }
-}else{
+
+} else {
+
     updateDisplay();
+
 }

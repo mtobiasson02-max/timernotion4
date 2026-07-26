@@ -1,67 +1,98 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+/* ===========================
+   RESET
+=========================== */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
 }
 
-body {
-    font-family: Inter, Arial, Helvetica, sans-serif;
-    background: transparent;
+body{
 
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
 
-    min-height: 100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    min-height:100vh;
+
+    background:transparent;
+
 }
 
-.timer-card {
+/* ===========================
+   TIMER CARD
+=========================== */
 
-    width: 420px;
+.timer-card{
 
-    background: #ffffff;
+    width:320px;
 
-    border-radius: 30px;
+    background:#fff;
 
-    padding: 36px;
+    border-radius:22px;
 
-    text-align: center;
+    padding:24px;
+
+    text-align:center;
 
     box-shadow:
-        0 20px 50px rgba(0,0,0,.08),
-        0 6px 18px rgba(0,0,0,.04);
+        0 10px 30px rgba(15,23,42,.08),
+        0 2px 10px rgba(15,23,42,.05);
 
-    transition: .25s ease;
+    transition:.25s ease;
+
+}
+
+/* ===========================
+   TIME
+=========================== */
+
+.time-wrapper{
+
+    margin-bottom:24px;
 
 }
 
 .time{
 
-    font-size:82px;
+    font-size:58px;
 
     font-weight:700;
 
-    letter-spacing:-3px;
+    letter-spacing:-2px;
 
     color:#202124;
 
-    margin-bottom:28px;
+    margin-bottom:18px;
+
+    min-height:70px;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
 
 }
+
+/* ===========================
+   PROGRESS BAR
+=========================== */
 
 .progress-container{
 
     width:100%;
 
-    height:12px;
+    height:10px;
 
     background:#ececec;
 
     border-radius:999px;
 
     overflow:hidden;
-
-    margin-bottom:42px;
 
 }
 
@@ -71,13 +102,17 @@ body {
 
     height:100%;
 
-    background:#67c36a;
+    background:#63c363;
 
     border-radius:999px;
 
-    transition:width .4s linear;
+    transition:width .3s linear;
 
 }
+
+/* ===========================
+   PLUS / MINUS
+=========================== */
 
 .top-buttons{
 
@@ -85,49 +120,59 @@ body {
 
     justify-content:center;
 
-    gap:55px;
+    gap:40px;
 
-    margin-bottom:34px;
+    margin-bottom:22px;
 
 }
 
 .top-buttons button{
 
-    width:74px;
+    width:52px;
 
-    height:74px;
+    height:52px;
 
     border:none;
 
-    border-radius:22px;
+    border-radius:14px;
 
-    background:#f7f7f7;
+    background:#f5f5f5;
 
-    font-size:38px;
+    color:#333;
 
-    font-weight:700;
+    font-size:28px;
 
-    color:#222;
+    font-weight:500;
 
     cursor:pointer;
 
-    transition:.2s;
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    transition:all .2s ease;
 
 }
 
 .top-buttons button:hover{
 
-    background:#ededed;
+    background:#ececec;
 
     transform:translateY(-2px);
 
 }
 
+/* ===========================
+   BOTTOM BUTTONS
+=========================== */
+
 .bottom-buttons{
 
     display:flex;
 
-    gap:16px;
+    gap:10px;
 
 }
 
@@ -135,25 +180,29 @@ body {
 
     flex:1;
 
+    height:48px;
+
     border:none;
 
-    border-radius:18px;
-
-    padding:16px 0;
-
-    font-size:24px;
-
-    font-weight:600;
+    border-radius:14px;
 
     cursor:pointer;
 
-    transition:.2s;
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    font-size:22px;
+
+    transition:all .2s ease;
 
 }
 
 #start{
 
-    background:#66c466;
+    background:#5dc66d;
 
     color:white;
 
@@ -161,9 +210,9 @@ body {
 
 #pause{
 
-    background:#ffe7d0;
+    background:#ffe6cc;
 
-    color:#a35300;
+    color:#a45b00;
 
 }
 
@@ -171,23 +220,83 @@ body {
 
     background:#f3f3f3;
 
-    color:#222;
+    color:#444;
 
 }
 
-.bottom-buttons button:hover{
+#start:hover{
+
+    background:#54bb63;
 
     transform:translateY(-2px);
 
-    filter:brightness(.98);
+}
+
+#pause:hover{
+
+    background:#ffd9b8;
+
+    transform:translateY(-2px);
 
 }
+
+#reset:hover{
+
+    background:#e8e8e8;
+
+    transform:translateY(-2px);
+
+}
+
+/* ===========================
+   FINISHED STATE
+=========================== */
 
 .completed{
 
     background:#eef9ef;
 
 }
+
+.finished{
+
+    display:flex;
+
+    flex-direction:column;
+
+    justify-content:center;
+
+    align-items:center;
+
+    gap:10px;
+
+}
+
+.finished-title{
+
+    font-size:34px;
+
+    font-weight:700;
+
+    color:#222;
+
+}
+
+.finished-message{
+
+    font-size:15px;
+
+    color:#666;
+
+    line-height:1.5;
+
+    max-width:220px;
+
+}
+
+/* ===========================
+   ANIMATION
+=========================== */
 
 .pop{
 
